@@ -1,24 +1,39 @@
 import { useState } from "react";
 
-export default function WeatherCard() {
-    const [isClicked, setIsClicked] = useState(false);    
+interface Test {
+    day: number;
+    //temp: string;
+}
 
-    function handleClick() {
-        setIsClicked(!isClicked);
-    }        
+interface Mars_Parameters {
+    m_day: number;
+    m_temp: number;
+    m_pres: number;
+    m_wind: number;        
+}
+
+interface Earth_Parametres {
+    e_day: number;
+    e_temp: number;
+    e_pres: number;
+    e_wind: number;
+}
+
+export default function WeatherCard(props: Mars_Parameters) {
+    const [isClicked, setIsClicked] = useState(false);           
 
     return (
-        <div>
-            <div>
-                <h5>SOL</h5>
-                <h5></h5>
+        <div className="card">
+            <div className="card-body">
+                <h5 className="card-title">SOL{props.m_day}</h5>
+                <h5 className="card-title"></h5>
                 <span></span>            
             </div>
             <div>
-                <div>
-                    <p>Temp. </p>
-                    <p>Pres. </p>
-                    <p></p>
+                <div className="card-body">
+                    <p className="card-text">Temp. {props.m_temp}</p>
+                    <p className="card-text">Pres. {props.m_pres}</p>
+                    <p className="card-text">Wind Speed {props.m_wind}</p>
                 </div>
             </div>
         </div>

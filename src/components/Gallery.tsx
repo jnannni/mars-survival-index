@@ -1,41 +1,35 @@
 import { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
-import { getMarsWeatherData } from "../services/marsService";
+import { getMarsWeather, New_Mars_Data } from "../services/marsService";
 
-interface Mars_Parameters {
-    day: number,
-    temperature: number,
-    pressure: number,
-    wind_speed: number,        
-}
-
-interface Earth_Parametres {
-    day: number,
-    temperature: number,
-    pressure: number,
-    wind_speed: number,
+type Mars_Weather = {
+    sol: number,
+    data: object,
 }
 
 export default function Gallery() {
-    const [marsData, setMarsData] = useState<Mars_Parameters | null>(null);
+    const [allEntries, setAllEntries] = useState<New_Mars_Data>({});     
+
     
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const data = await getMarsWeatherData();
-                setMarsData(data);                                
+            try {                
+                const response = await getMarsWeather();                                           
+                if (response) {
+                    setAllEntries(response); 
+                }                                                                                         
             } catch (error) {
-                console.log(error);
+                throw error;
             }            
         }
-        fetchData();        
-    }, []);  
+        fetchData();           
+    }, []);      
+        
 
-    
     return (
-        <div>
-            {marsData && <WeatherCard />}
-            {marsData && marsData.day}
+        <div>  
+            {allEntries && Object.entries(allEntries).map(item => <WeatherCard m_day={parseInt(item[0])} m_temp={Math.trunc(item[1].temp)}
+                                                                                m_pres={Math.trunc(item[1].pre)} m_wind={Math.trunc(item[1].wind)}/>)}           
         </div>
     )
 }
