@@ -3,6 +3,8 @@ import ReserveComponent from "./ReserveComponent";
 import { ReservesContext } from "../contexts/reservesContext";
 import { InstallationContext } from "../contexts/installationContext";
 
+// contains "reserves" of water and oxygen users can take on board for a one day survival expedition
+// as well as the toggle for a magnetic field that can be either installed or got rid of
 export default function Rover() {        
     const {state: reservesState, dispatch: reservesDispatch} = useContext(ReservesContext);
     const {state: installationState, dispatch: installationDispatch} = useContext(InstallationContext);      

@@ -7,6 +7,7 @@ interface Parameters {
     selectCard?: () => void;
 }
 
+// a card for custom input - introduced because of mostly similar data we get from mars weather api
 export default function CustomWeatherCard(props: Parameters) { 
     const {state, dispatch} = useContext(CustomWeatherContext);     
     

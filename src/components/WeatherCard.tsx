@@ -9,6 +9,7 @@ interface Mars_Parameters {
     selectCard?: () => void;       
 }
 
+// a weather card container that displays mars weather from nasa api base
 export default function WeatherCard(props: Mars_Parameters) {
     const [isClicked, setIsClicked] = useState(false);           
 

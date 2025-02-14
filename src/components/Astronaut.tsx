@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { InstallationContext } from "../contexts/installationContext";
 
+//contains a clickable image that changes whether a user "wears" a space suit or not
 export default function Astronaut() {
     const {state, dispatch} = useContext(InstallationContext); 
 
