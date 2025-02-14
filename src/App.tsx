@@ -1,12 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Gallery from './components/Gallery';
+import Home from './pages/Home';
+import { ReservesProvider } from './contexts/reservesContext';
+import { InstallationProvider } from './contexts/installationContext';
 
 function App() {
   return (
     <div className="App">
-       <Gallery />
+      <ReservesProvider>
+        <InstallationProvider>
+          <Home />
+        </InstallationProvider>        
+      </ReservesProvider>                  
     </div>
   );
 }

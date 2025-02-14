@@ -1,15 +1,12 @@
 import { useState } from "react";
 
-interface Test {
-    day: number;
-    //temp: string;
-}
-
 interface Mars_Parameters {
     m_day: number;
     m_temp: number;
     m_pres: number;
-    m_wind: number;        
+    m_wind: number;
+    className?: string;
+    selectCard?: () => void;       
 }
 
 interface Earth_Parametres {
@@ -23,7 +20,7 @@ export default function WeatherCard(props: Mars_Parameters) {
     const [isClicked, setIsClicked] = useState(false);           
 
     return (
-        <div className="card">
+        <div className={`card ${props.className}`} onClick={props.selectCard}>
             <div className="card-body">
                 <h5 className="card-title">SOL{props.m_day}</h5>
                 <h5 className="card-title"></h5>
