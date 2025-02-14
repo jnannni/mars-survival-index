@@ -3,8 +3,7 @@ import ReserveComponent from "./ReserveComponent";
 import { ReservesContext } from "../contexts/reservesContext";
 import { InstallationContext } from "../contexts/installationContext";
 
-export default function Rover() {
-    const [isMagneticFieldOn, setIsMagneticFieldOn] = useState(false);    
+export default function Rover() {        
     const {state: reservesState, dispatch: reservesDispatch} = useContext(ReservesContext);
     const {state: installationState, dispatch: installationDispatch} = useContext(InstallationContext);      
 

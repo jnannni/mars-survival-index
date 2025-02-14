@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ReservesContext } from "../contexts/reservesContext";
 import { InstallationContext } from "../contexts/installationContext";
 
@@ -26,7 +26,9 @@ export default function SurvivalIndex(props: CurrentWeather) {
         maxWindSpeed: 268,
     }
 
-    console.log(indexValues);
+    useEffect(() => {
+        countIndex();
+    }, [indexValues]);
 
     // max index - 100, min index - 0, if exceeds just bring to max/min. we count index using 7 variable we have in contexts and in its parent.
     // temperature & templimit - points range [-20, 20]; magnetic field = -10 or 10; pressure - always negative (-15),
@@ -37,16 +39,16 @@ export default function SurvivalIndex(props: CurrentWeather) {
                     countPointsReserves(indexValues.oxygen, reservesState.oxygen.max_count, 20) +
                     countPointsBooleans(indexValues.isMagFieldInstalled, 10, -10) + 
                     countPointsTemp(indexValues.temp, indexValues.tempLimit, reservesState.tempLimit.min_count, 20) +
-                    countPointsWind(indexValues.wind, indexValues.maxWindSpeed, -10) - 15;
+                    countPointsWind(indexValues.wind, indexValues.maxWindSpeed, -10) - 10;        
         setIndex(indexValues.isSuitOn ? (points < 0 ? 0 : points) : -1);
     }
 
-    const countPointsReserves = (currentValue: number, maxValue: number, maxPoints: number) => (currentValue / maxValue) * maxPoints;
+    const countPointsReserves = (currentValue: number, maxValue: number, maxPoints: number) => Math.round((currentValue / maxValue) * maxPoints);
     const countPointsBooleans = (boolValue: boolean, maxPoints: number, minPoints: number) => boolValue ? maxPoints : minPoints;
     const countPointsTemp = (temperature: number, suitLimit: number, minTemp: number, maxPoints: number) => {
-        return temperature === suitLimit ? 0 : ((temperature - minTemp) / (suitLimit - minTemp)) * maxPoints;
+        return temperature === suitLimit ? 0 : Math.round(((temperature - minTemp) / (suitLimit - minTemp)) * maxPoints);
     }
-    const countPointsWind = (wind: number, maxSpeed: number, minPoints: number) => (wind / maxSpeed) * minPoints;
+    const countPointsWind = (wind: number, maxSpeed: number, minPoints: number) => Math.round((wind / maxSpeed) * minPoints);
 
     return (
         <div>

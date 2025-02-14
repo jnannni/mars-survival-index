@@ -1,6 +1,6 @@
 export const INITIAL_STATE = {
-    water: {counter: 0.4, min_count: 0, max_count: 10, step: 0.1},
-    oxygen: {counter: 0.48, min_count: 0, max_count: 10, step: 0.1},
+    water: {counter: 1.25, min_count: 0, max_count: 2.5, step: 0.1},
+    oxygen: {counter: 225, min_count: 0, max_count: 550, step: 10},
     tempLimit: {counter: -70, min_count: -150, max_count: 20, step: 1},
 }
 

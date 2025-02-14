@@ -9,13 +9,6 @@ interface Mars_Parameters {
     selectCard?: () => void;       
 }
 
-interface Earth_Parametres {
-    e_day: number;
-    e_temp: number;
-    e_pres: number;
-    e_wind: number;
-}
-
 export default function WeatherCard(props: Mars_Parameters) {
     const [isClicked, setIsClicked] = useState(false);           
 
