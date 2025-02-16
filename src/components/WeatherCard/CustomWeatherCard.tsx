@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { CustomWeatherContext } from "../contexts/customWeatherContext";
-import { CustomState } from "../reducers/customCardReducer";
+import { CustomWeatherContext } from "../../contexts/customWeatherContext";
+import { CustomState } from "../../reducers/customCardReducer";
+import "./weatherCard.css";
 
 interface Parameters {
     className?: string;

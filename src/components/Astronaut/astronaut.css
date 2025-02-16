@@ -1,0 +1,59 @@
+@import url(../../index.css);
+
+.bools-container {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.button {
+    background-color: rgba(255, 255, 255, .7);
+    text-transform: capitalize;
+    font-size: var(--font-size-xs);
+    padding: 0.5em 1em;
+    border-radius: 10px;  
+}
+
+.button:hover {
+    background-color: white;
+}
+
+/* @media (min-width: 425px) {} */
+
+/* sm */
+@media (min-width: 640px) {
+    .bools-container {            
+    } 
+    .button {
+        font-size: var(--font-size-sm);
+    }   
+}
+
+/* md */
+@media (min-width: 768px) {
+    .bools-container {   
+        flex-direction: column; 
+        justify-content: center;
+    }
+    .button {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+    .bools-container {      
+    } 
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .bools-container {      
+    } 
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    .bools-container {       
+    } 
+}

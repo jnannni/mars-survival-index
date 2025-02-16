@@ -1,0 +1,41 @@
+@import url(../../index.css);
+
+.interactive-model-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* @media (min-width: 425px) {} */
+
+/* sm */
+@media (min-width: 640px) {
+    .interactive-model-container {            
+    }    
+}
+
+/* md */
+@media (min-width: 768px) {
+    .interactive-model-container {
+        flex-direction: row; 
+        gap: 20px;              
+    }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+    .interactive-model-container {      
+    } 
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .interactive-model-container {      
+    } 
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    .interactive-model-container {       
+    } 
+}

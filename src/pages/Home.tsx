@@ -1,19 +1,23 @@
 import { useEffect, useState, useContext } from "react";
-import WeatherCard from "../components/WeatherCard";
+import WeatherCard from "../components/WeatherCard/WeatherCard";
 import { getMarsWeather, New_Mars_Data, getMarsPhoto } from "../services/marsService";
-import InteractiveModel from "../components/InteractiveModel";
+import InteractiveModel from "../components/InteractiveModel/InteractiveModel";
 import SurvivalIndex from "../components/SurvivalIndex";
-import CustomWeatherCard from "../components/CustomWeatherCard";
+import CustomWeatherCard from "../components/WeatherCard/CustomWeatherCard";
 import { CustomWeatherContext } from "../contexts/customWeatherContext";
 import SiteDescription from "../components/SiteDescription";
+import Header from "../components/Header/Header";
+import './home.css';
 
 export default function Home() {
     const [allEntries, setAllEntries] = useState<New_Mars_Data>({});     
     const [selectedCard, setSelectedCard] = useState("");
     const [photoURL, setPhotoURL] = useState("");
-    const {state, dispatch} = useContext(CustomWeatherContext); 
+    const {state, dispatch} = useContext(CustomWeatherContext);     
     
     useEffect(() => {
+        // window.addEventListener('resize', handleWindowSizeChanges);
+
         //recieve data on render
         const fetchData = async () => {
             try {                
@@ -32,19 +36,27 @@ export default function Home() {
     }, []);          
 
     return (
-        <div>
-            <div style={{backgroundImage: `url(${photoURL})`, backgroundSize: "cover"}}>  
-                <h2>Your survival index on mars today!</h2>
-                <p>Today’s temperature on Mars is -80°C, which is 100°C colder than Antarctica! Wear a spacesuit rated for -100°C!</p>
-                <InteractiveModel /> 
-                {selectedCard === "custom" ? <SurvivalIndex temp={state.temp} pres={state.pres} wind={state.wind}/>: 
-                Object.entries(allEntries).filter(item => selectedCard === item[0]).map(item => <SurvivalIndex temp={Math.trunc(item[1].temp)} pres={Math.trunc(item[1].pre)} wind={Math.trunc(item[1].wind)}/>)} 
-                <div className="card-group">  
-                    {allEntries && Object.entries(allEntries)
-                                    .map(item => <WeatherCard className={selectedCard === item[0] ? "text-bg-primary" : ""} key={item[0]} m_day={parseInt(item[0])} m_temp={Math.trunc(item[1].temp)}
-                                                                m_pres={Math.trunc(item[1].pre)} m_wind={Math.trunc(item[1].wind)} selectCard={() => setSelectedCard(item[0])}/>)}
-                    <CustomWeatherCard className={selectedCard === "custom" ? "text-bg-primary" : ""} selectCard={() => setSelectedCard("custom")}/>
-                </div>
+        <div>            
+            <div style={{backgroundImage: `url(${photoURL})`, backgroundSize: "cover"}}> 
+                <Header />
+                <div className="main-content container">
+                    <div className="counter-content">
+                        <div className="display-content">
+                            <h2>Your survival index on mars today!</h2>
+                            <p className="display-text">Today’s temperature on Mars is -80°C, which is 100°C colder than Antarctica! Wear a spacesuit rated for -100°C!</p>                    
+                            {selectedCard === "custom" ? <SurvivalIndex temp={state.temp} pres={state.pres} wind={state.wind}/>: 
+                            Object.entries(allEntries).filter(item => selectedCard === item[0]).map(item => 
+                                                <SurvivalIndex temp={Math.trunc(item[1].temp)} pres={Math.trunc(item[1].pre)} wind={Math.trunc(item[1].wind)}/>)} 
+                        </div>                        
+                        <InteractiveModel />
+                    </div>                     
+                    <div className="card-group">  
+                        {allEntries && Object.entries(allEntries)
+                                        .map(item => <WeatherCard className={selectedCard === item[0] ? "text-bg-primary" : ""} key={item[0]} m_day={parseInt(item[0])} m_temp={Math.trunc(item[1].temp)}
+                                                                    m_pres={Math.trunc(item[1].pre)} m_wind={Math.trunc(item[1].wind)} selectCard={() => setSelectedCard(item[0])}/>)}
+                        <CustomWeatherCard className={selectedCard === "custom" ? "text-bg-primary" : ""} selectCard={() => setSelectedCard("custom")}/>
+                    </div>
+                </div>                
             </div>
             <SiteDescription />
         </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./weatherCard.css";
 
 interface Mars_Parameters {
     m_day: number;
