@@ -10,9 +10,7 @@
 /* @media (min-width: 425px) {} */
 
 /* sm */
-@media (min-width: 640px) {
-    .reserves-container {            
-    }    
+@media (min-width: 640px) {   
 }
 
 /* md */
@@ -21,8 +19,8 @@
         order: 0;  
         display: flex;
         flex-direction: column;
-        justify-content: center; 
-        width: 30%;                   
+        justify-content: space-between; 
+        width: auto;                   
     }
     
 }

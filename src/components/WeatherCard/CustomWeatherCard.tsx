@@ -17,14 +17,16 @@ export default function CustomWeatherCard(props: Parameters) {
     }
     
     return (
-        <div className={`card ${props.className}`} onClick={props.selectCard}>
-            <h5>Enter Custom Weather</h5>
-            <input className="form-control" type="number" placeholder="Temperature" onChange={handleChange} 
-                    name="temp" id="customTemp" max={20} min={-150} inputMode="numeric" step={1}/>
-            <input className="form-control" type="number" placeholder="Pressure" onChange={handleChange} 
-                    name="pres" id="customPres" max={870} min={0} inputMode="numeric" step={10}/>
-            <input className="form-control" type="number" placeholder="Wind speed" onChange={handleChange} 
-                    name="wind" id="customWind" max={268} min={0} inputMode="numeric" step={10}/>
+        <div className={`card ${props.className} input-container`} onClick={props.selectCard}>
+            <h5 className="card-title">Enter Custom Weather</h5>
+            <div className="form-first-line">
+                <input className="form-input" type="number" placeholder="Temperature" onChange={handleChange} 
+                        name="temp" id="customTemp" max={20} min={-150} inputMode="numeric" step={1}/>
+                <input className="form-input" type="number" placeholder="Wind speed" onChange={handleChange} 
+                        name="wind" id="customWind" max={268} min={0} inputMode="numeric" step={10}/>
+            </div>            
+            <input className="form-input" type="number" placeholder="Pressure" onChange={handleChange} 
+                    name="pres" id="customPres" max={870} min={0} inputMode="numeric" step={10}/>            
         </div>
     )
 }

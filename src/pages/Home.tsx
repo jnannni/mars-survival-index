@@ -1,11 +1,11 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import WeatherCard from "../components/WeatherCard/WeatherCard";
 import { getMarsWeather, New_Mars_Data, getMarsPhoto } from "../services/marsService";
 import InteractiveModel from "../components/InteractiveModel/InteractiveModel";
-import SurvivalIndex from "../components/SurvivalIndex";
+import SurvivalIndex from "../components/SurvivalIndex/SurvivalIndex";
 import CustomWeatherCard from "../components/WeatherCard/CustomWeatherCard";
 import { CustomWeatherContext } from "../contexts/customWeatherContext";
-import SiteDescription from "../components/SiteDescription";
+import SiteDescription from "../components/SiteDescription/SiteDescription";
 import Header from "../components/Header/Header";
 import './home.css';
 
@@ -13,10 +13,13 @@ export default function Home() {
     const [allEntries, setAllEntries] = useState<New_Mars_Data>({});     
     const [selectedCard, setSelectedCard] = useState("");
     const [photoURL, setPhotoURL] = useState("");
-    const {state, dispatch} = useContext(CustomWeatherContext);     
+    const {state, dispatch} = useContext(CustomWeatherContext);
+    const compRef = useRef<HTMLDivElement>();
+    const [compWidth, setCompWidth] = useState(0);
+    const [curComp, setCurComp] = useState<HTMLDivElement>();
+    
     
     useEffect(() => {
-        // window.addEventListener('resize', handleWindowSizeChanges);
 
         //recieve data on render
         const fetchData = async () => {
@@ -32,30 +35,34 @@ export default function Home() {
                 throw error;
             }            
         }
-        fetchData();           
-    }, []);          
+        fetchData();                   
+    }, []); 
 
     return (
         <div>            
-            <div style={{backgroundImage: `url(${photoURL})`, backgroundSize: "cover"}}> 
+            <div className="home-container" style={{backgroundImage: `url(${photoURL})`}}> 
                 <Header />
                 <div className="main-content container">
                     <div className="counter-content">
                         <div className="display-content">
-                            <h2>Your survival index on mars today!</h2>
+                            <h2 className="main-title">Your survival index on mars today!</h2>
                             <p className="display-text">Today’s temperature on Mars is -80°C, which is 100°C colder than Antarctica! Wear a spacesuit rated for -100°C!</p>                    
                             {selectedCard === "custom" ? <SurvivalIndex temp={state.temp} pres={state.pres} wind={state.wind}/>: 
                             Object.entries(allEntries).filter(item => selectedCard === item[0]).map(item => 
                                                 <SurvivalIndex temp={Math.trunc(item[1].temp)} pres={Math.trunc(item[1].pre)} wind={Math.trunc(item[1].wind)}/>)} 
                         </div>                        
                         <InteractiveModel />
-                    </div>                     
-                    <div className="card-group">  
-                        {allEntries && Object.entries(allEntries)
-                                        .map(item => <WeatherCard className={selectedCard === item[0] ? "text-bg-primary" : ""} key={item[0]} m_day={parseInt(item[0])} m_temp={Math.trunc(item[1].temp)}
-                                                                    m_pres={Math.trunc(item[1].pre)} m_wind={Math.trunc(item[1].wind)} selectCard={() => setSelectedCard(item[0])}/>)}
-                        <CustomWeatherCard className={selectedCard === "custom" ? "text-bg-primary" : ""} selectCard={() => setSelectedCard("custom")}/>
-                    </div>
+                    </div> 
+                    <div className="cards-container">
+                        <div className="card-group"> 
+                            {/* <span className="material-symbols-outlined pre-btn">chevron_right</span>  */}
+                            {allEntries && Object.entries(allEntries)
+                                            .map(item => <WeatherCard className={selectedCard === item[0] ? "selected-card" : ""} key={item[0]} m_day={parseInt(item[0])} m_temp={Math.trunc(item[1].temp)}
+                                                                        m_pres={Math.trunc(item[1].pre)} m_wind={Math.trunc(item[1].wind)} selectCard={() => setSelectedCard(item[0])}/>)}
+                            <CustomWeatherCard className={selectedCard === "custom" ? "selected-card" : ""} selectCard={() => setSelectedCard("custom")}/>
+                            {/* <span className="material-symbols-outlined nxt-btn">chevron_right</span> */}
+                        </div>
+                    </div>                    
                 </div>                
             </div>
             <SiteDescription />

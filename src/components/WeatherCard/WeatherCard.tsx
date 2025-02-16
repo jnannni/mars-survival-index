@@ -17,15 +17,15 @@ export default function WeatherCard(props: Mars_Parameters) {
     return (
         <div className={`card ${props.className}`} onClick={props.selectCard}>
             <div className="card-body">
-                <h5 className="card-title">SOL{props.m_day}</h5>
+                <h4 className="card-title">SOL{props.m_day}</h4>
                 <h5 className="card-title"></h5>
                 <span></span>            
             </div>
             <div>
                 <div className="card-body">
-                    <p className="card-text">Temp. {props.m_temp}</p>
-                    <p className="card-text">Pres. {props.m_pres}</p>
-                    <p className="card-text">Wind Speed {props.m_wind}</p>
+                    <p className="card-text">Temperature <span>{props.m_temp}°C</span></p>
+                    <p className="card-text">Pressure <span>{props.m_pres}Pa</span></p>
+                    <p className="card-text">Wind Speed <span>{props.m_wind}m/s</span></p>
                 </div>
             </div>
         </div>

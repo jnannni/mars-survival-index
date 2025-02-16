@@ -1,20 +1,36 @@
 :root {
     --primary-text-color: #f5f5f5;
+    --primary-text-color-80: rgba(245, 245, 245, .7);
     --primary-text-color-d: #212121;
     --hover-text-color: #e0e0e0;
     --disabled-state-color: #bebebe;
 
+    /* colors */
+    --color-gray-200: #E5E7EB;
+    --color-gray-500: #6B7280;
+    --color-gray-300: #D1D5DB;
+    --color-gray-700: #374151;
+    --color-gray-800: #1F2937;
+    --color-gray-800-30: rgba(31, 41, 55, .3); 
+    --color-gray-800-50: rgba(31, 41, 55, .5); 
+    --color-black-30: rgba(0, 0, 0, .3);
+    --color-black-50: rgba(0, 0, 0, .5);   
+
     /* sizes */
+    --font-size-xxs: 0.5rem;
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
     --font-size-xl: 1.25rem;
     --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.75rem;
+    --font-size-4xl: 2rem;
+    --font-size-5xl: 2.25rem;
 }
 
 * {
-    margin: 0;    
+    margin: 0;          
 }
 
 html {
@@ -32,6 +48,17 @@ svg {
     user-select: none;
 }
 
+input, input::placeholder {
+    font-family: "Anybody", serif;
+    border: none;
+    outline: none;
+    color: var(--primary-text-color);
+}
+
+input:focus::placeholder {
+    opacity: 0;
+}
+
 button {
     font-family: "Anybody", serif;
     display: inline-block;
@@ -40,3 +67,21 @@ button {
     background-color: none;
     cursor: pointer;
 }
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+/* @media (min-width: 1024px) {} */
+
+/* xl */
+/* @media (min-width: 1280px) {} */
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */

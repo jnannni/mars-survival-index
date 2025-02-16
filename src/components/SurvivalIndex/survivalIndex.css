@@ -1,0 +1,34 @@
+@import url(../../index.css);
+
+.index-container {    
+    flex: 0 0 auto;
+    border: 2px solid var(--primary-text-color);
+    border-radius: 5rem;
+    padding: 2.5rem;
+}
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+@media (min-width: 1024px) {
+    .index-container {
+        padding: 3.5rem;;
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .index-container {
+        padding: 4rem;
+    }
+}
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */

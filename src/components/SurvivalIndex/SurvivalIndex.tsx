@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
-import { ReservesContext } from "../contexts/reservesContext";
-import { InstallationContext } from "../contexts/installationContext";
+import { ReservesContext } from "../../contexts/reservesContext";
+import { InstallationContext } from "../../contexts/installationContext";
+import "./survivalIndex.css";
 
 interface CurrentWeather {
     temp: number,
@@ -51,8 +52,8 @@ export default function SurvivalIndex(props: CurrentWeather) {
     const countPointsWind = (wind: number, maxSpeed: number, minPoints: number) => Math.round((wind / maxSpeed) * minPoints);
 
     return (
-        <div>
-            <span>{index}</span>
+        <div className="index-container">
+                <span>{index}</span>
         </div>
     )
 }

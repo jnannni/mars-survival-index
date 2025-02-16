@@ -13,7 +13,7 @@ export default function ReserveComponent(props: Default_Values) {
         <div className="reserve-container">
             <div className="reserve-info">
                 <h5 className="reserve-header">{props.header}</h5>
-                <span>{props.counter.toFixed(1)}</span>
+                <span className="reserve-value">{props.counter.toFixed(1)}{props.header === "oxygen" || props.header === "water" ? "L" : "°C"}</span>
             </div>            
             <div className="buttons-container">
                 <button className="btn" onClick={props.increase}><span className="material-symbols-outlined inc-icon">add</span></button>

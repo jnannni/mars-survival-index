@@ -1,8 +1,132 @@
 @import url(../../index.css);
 
-/* .card {
+.card {
+    font-size: var(--font-size-xs);
+    background-color: var(--color-black-30);
     display: flex;
     flex-direction: column;
-    padding: .5em 1em;
-    border: 1px solid red;    
-} */
+    align-items: flex-start;
+    justify-content: center;
+    padding: .5rem 2rem;
+    border: none;
+    border-radius: 15px;   
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    width: 200px;
+}
+
+.card:hover {
+    background-color: var(--color-black-50);
+    cursor: pointer;
+}
+
+.input-container input::placeholder {
+    font-size: var(--font-size-xxs); 
+    color: var(--primary-text-color-80);   
+}
+
+.card-title {
+    margin-bottom: .5em;  
+    font-size: var(--font-size-xs);  
+}
+
+.card-text {
+    margin-bottom: .5rem;
+}
+
+.card-text > span {
+    margin-left: .5rem;
+    padding: 0 .5rem;
+    background-color: var(--primary-text-color);
+    color: var(--primary-text-color-d)
+}
+
+.selected-card {
+    border: 1px solid var(--primary-text-color);
+    background-color: rgba(0, 0, 0, .4);
+    transition: background-color .5s ease;
+}
+
+.form-first-line {
+    width: 100%;
+    display: flex;
+    margin-bottom: .5em;
+    gap: 1rem;
+}
+
+.form-input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: .3rem .3rem;
+    background: none;    
+    border-bottom: .1rem solid var(--primary-text-color-80);
+}
+
+.form-input:focus, .form-input:hover {
+    border-bottom: .1rem solid var(--primary-text-color);
+}
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+@media (min-width: 640px) {
+    .card, .card-title {
+        font-size: var(--font-size-sm);
+        width: 250px;
+    }
+}
+
+/* md */
+@media (min-width: 768px) {
+    .card, .card-title {
+        font-size: var(--font-size-base);
+    }  
+    .card {
+        padding: 1rem 2rem;
+    }  
+}
+
+/* lg */
+@media (min-width: 1024px) {
+    .card, .card-title {
+        font-size: var(--font-size-lg);
+        width: 300px;
+    }
+    .card {
+        padding: 1.5rem 2rem;
+    }
+    .input-container input::placeholder {
+        font-size: var(--font-size-xs);    
+    }
+
+    .form-input {
+        padding: .5rem .3rem;
+    }
+
+    .form-first-line {
+        gap: 1.5rem;
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .card {
+        font-size: var(--font-size-xl);
+        width: 350px;
+    }
+    .input-container input::placeholder {
+        font-size: var(--font-size-sm);    
+    }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    .card {
+        font-size: var(--font-size-2xl);
+        width: 400px;
+    }
+    .card {
+        padding: 2rem 2rem;
+    }
+}
