@@ -1,16 +1,19 @@
 {
   "files": {
     "main.css": "/mars-survival-index/static/css/main.001d1e12.css",
-    "main.js": "/mars-survival-index/static/js/main.42f5d8cd.js",
+    "main.js": "/mars-survival-index/static/js/main.9e505788.js",
     "static/js/453.437dea9d.chunk.js": "/mars-survival-index/static/js/453.437dea9d.chunk.js",
     "static/media/mars-survival-index-back.png": "/mars-survival-index/static/media/mars-survival-index-back.8739917ff46d11ce62bc.png",
+    "static/media/rover.png": "/mars-survival-index/static/media/rover.5fdb32eabb2d4babc2fb.png",
+    "static/media/Astronaut.png": "/mars-survival-index/static/media/Astronaut.ba9d9bee0a04a48c82a4.png",
+    "static/media/astronaut_undressed.png": "/mars-survival-index/static/media/astronaut_undressed.652bea58d4554021bce8.png",
     "index.html": "/mars-survival-index/index.html",
     "main.001d1e12.css.map": "/mars-survival-index/static/css/main.001d1e12.css.map",
-    "main.42f5d8cd.js.map": "/mars-survival-index/static/js/main.42f5d8cd.js.map",
+    "main.9e505788.js.map": "/mars-survival-index/static/js/main.9e505788.js.map",
     "453.437dea9d.chunk.js.map": "/mars-survival-index/static/js/453.437dea9d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.001d1e12.css",
-    "static/js/main.42f5d8cd.js"
+    "static/js/main.9e505788.js"
   ]
 }
