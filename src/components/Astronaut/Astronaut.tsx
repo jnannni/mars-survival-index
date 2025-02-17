@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { InstallationContext } from "../../contexts/installationContext";
 import "./astronaut.css";
-import astronaut from "/assets/Astronaut.png";
-import astronautUn from "/assets/astronaut_undressed.png";
+import astronaut from "assets/Astronaut.png";
+import astronautUn from "assets/astronaut_undressed.png";
 import rover from "assets/rover.png";
 
 //contains a clickable image that changes whether a user "wears" a space suit or not
