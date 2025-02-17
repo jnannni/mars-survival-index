@@ -1,10 +1,18 @@
 @import url(../../index.css);
 
-.index-container {    
+.index-container {
+    display: flex;
     flex: 0 0 auto;
-    border: 2px solid var(--primary-text-color);
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.index-number-container {    
+    flex: 0 0 auto;
+    border: 3px solid var(--primary-text-color);
     border-radius: 5rem;
     padding: 2.5rem;
+    font-weight: 600;
 }
 
 /* xs */
@@ -18,17 +26,23 @@
 
 /* lg */
 @media (min-width: 1024px) {
-    .index-container {
-        padding: 3.5rem;;
+    .index-number-container {
+        padding: 3.5rem;
+        border: 5px solid var(--primary-text-color);
+        font-size: var(--font-size-xl);        
     }
 }
 
 /* xl */
 @media (min-width: 1280px) {
-    .index-container {
+    .index-number-container {
         padding: 4rem;
     }
 }
 
 /* 2xl */
-/* @media (min-width: 1536px) {} */
+@media (min-width: 1536px) {
+    .index-number-container {
+        font-size: var(--font-size-2xl);
+    }
+}

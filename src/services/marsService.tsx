@@ -46,7 +46,7 @@ export const getMarsPhoto = async () => {
     try {
         while(!isPhotoFound) {
             const sol = Math.floor(Math.random() * 4449);            
-            const response = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${nasa_api_key}&sol=${sol}&camera=mast`);            
+            const response = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${nasa_api_key}&sol=${sol}&camera=fhaz`);            
             if (response.data.photos && response.data.photos.length !== 0) {                
                 isPhotoFound = true;
                 photoURL = response.data.photos[0].img_src;

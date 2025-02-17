@@ -14,6 +14,7 @@ export default function SurvivalIndex(props: CurrentWeather) {
     const {state: reservesState, dispatch: reservesDispatch} = useContext(ReservesContext);
     const {state: installationState, dispatch: installationDispatch} = useContext(InstallationContext);
     const [index, setIndex] = useState(0);
+    const [survivalTime, setSurvivalTime] = useState({hours: 0, minutes: 0});
 
     const indexValues = {
         water: reservesState.water.counter,
@@ -42,18 +43,31 @@ export default function SurvivalIndex(props: CurrentWeather) {
                     countPointsTemp(indexValues.temp, indexValues.tempLimit, reservesState.tempLimit.min_count, 20) +
                     countPointsWind(indexValues.wind, indexValues.maxWindSpeed, -10) - 10;        
         setIndex(indexValues.isSuitOn ? (points < 0 ? 0 : points) : -1);
+        calculateSurvivalTime(index);
+    }
+
+    const calculateSurvivalTime = (survivalIndex: number) => {
+        let minutes = Math.round((survivalIndex / 100) * 1440);
+        let hours = Math.round(minutes / 60);
+        let remainingMin = minutes % 60;
+        setSurvivalTime({hours: hours, minutes: remainingMin});
     }
 
     const countPointsReserves = (currentValue: number, maxValue: number, maxPoints: number) => Math.round((currentValue / maxValue) * maxPoints);
     const countPointsBooleans = (boolValue: boolean, maxPoints: number, minPoints: number) => boolValue ? maxPoints : minPoints;
     const countPointsTemp = (temperature: number, suitLimit: number, minTemp: number, maxPoints: number) => {
-        return temperature === suitLimit ? 0 : Math.round(((temperature - minTemp) / (suitLimit - minTemp)) * maxPoints);
+        return Math.round(((temperature - minTemp) / (suitLimit - minTemp)) * maxPoints);
     }
     const countPointsWind = (wind: number, maxSpeed: number, minPoints: number) => Math.round((wind / maxSpeed) * minPoints);
 
     return (
         <div className="index-container">
-                <span>{index}</span>
+            <div className="index-number-container">
+                    <span>{index}</span>
+            </div>
+            <div>{index === -1 ? "Well... You are dead💀" : `You will survive for the next ${survivalTime.hours !== 0 ? `${survivalTime.hours} hour(s)` : ""}
+                ${survivalTime.minutes !== 0 ? ` and ${survivalTime.minutes} minute(s)` : ""}
+                ${survivalTime.hours >= 20 ? "😍" : survivalTime.hours >= 15 ? "😁" : survivalTime.hours >= 6 ? "🥶" : "💀"} `}</div>
         </div>
     )
 }

@@ -41,31 +41,35 @@ export default function Home() {
     return (
         <div>            
             <div className="home-container" style={{backgroundImage: `url(${photoURL})`}}> 
-                <Header />
-                <div className="main-content container">
-                    <div className="counter-content">
-                        <div className="display-content">
-                            <h2 className="main-title">Your survival index on mars today!</h2>
-                            <p className="display-text">Today’s temperature on Mars is -80°C, which is 100°C colder than Antarctica! Wear a spacesuit rated for -100°C!</p>                    
-                            {selectedCard === "custom" ? <SurvivalIndex temp={state.temp} pres={state.pres} wind={state.wind}/>: 
-                            Object.entries(allEntries).filter(item => selectedCard === item[0]).map(item => 
-                                                <SurvivalIndex temp={Math.trunc(item[1].temp)} pres={Math.trunc(item[1].pre)} wind={Math.trunc(item[1].wind)}/>)} 
-                        </div>                        
-                        <InteractiveModel />
+                <div className="image-overlay">
+                    <Header />
+                    <div className="main-content container">
+                        <div className="counter-content">
+                            <div className="display-content">
+                                <h2 className="main-title">Your survival index on mars today!</h2>
+                                <p className="display-text">Today’s temperature on Mars is -80°C, which is 100°C colder than Antarctica! Wear a spacesuit rated for -100°C!</p>                    
+                                {selectedCard === "custom" ? <SurvivalIndex temp={state.temp} pres={state.pres} wind={state.wind}/>: 
+                                Object.entries(allEntries).filter(item => selectedCard === item[0]).map(item => 
+                                                    <SurvivalIndex temp={Math.trunc(item[1].temp)} pres={Math.trunc(item[1].pre)} wind={Math.trunc(item[1].wind)}/>)} 
+                            </div>                        
+                            <InteractiveModel />
+                        </div> 
+                        <div className="cards-container">
+                            <div className="card-group"> 
+                                {/* <span className="material-symbols-outlined pre-btn">chevron_right</span>  */}
+                                {allEntries && Object.entries(allEntries)
+                                                .map(item => <WeatherCard className={selectedCard === item[0] ? "selected-card" : ""} key={item[0]} m_day={parseInt(item[0])} m_temp={Math.trunc(item[1].temp)}
+                                                                            m_pres={Math.trunc(item[1].pre)} m_wind={Math.trunc(item[1].wind)} selectCard={() => setSelectedCard(item[0])}/>)}
+                                <CustomWeatherCard className={selectedCard === "custom" ? "selected-card" : ""} selectCard={() => setSelectedCard("custom")}/>
+                                {/* <span className="material-symbols-outlined nxt-btn">chevron_right</span> */}
+                            </div>
+                        </div>                    
                     </div> 
-                    <div className="cards-container">
-                        <div className="card-group"> 
-                            {/* <span className="material-symbols-outlined pre-btn">chevron_right</span>  */}
-                            {allEntries && Object.entries(allEntries)
-                                            .map(item => <WeatherCard className={selectedCard === item[0] ? "selected-card" : ""} key={item[0]} m_day={parseInt(item[0])} m_temp={Math.trunc(item[1].temp)}
-                                                                        m_pres={Math.trunc(item[1].pre)} m_wind={Math.trunc(item[1].wind)} selectCard={() => setSelectedCard(item[0])}/>)}
-                            <CustomWeatherCard className={selectedCard === "custom" ? "selected-card" : ""} selectCard={() => setSelectedCard("custom")}/>
-                            {/* <span className="material-symbols-outlined nxt-btn">chevron_right</span> */}
-                        </div>
-                    </div>                    
-                </div>                
+                </div>               
             </div>
-            <SiteDescription />
+            <div className="description-container">
+                <SiteDescription />
+            </div>            
         </div>
     )
 }
