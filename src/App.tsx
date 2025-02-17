@@ -3,20 +3,20 @@ import Home from './pages/Home';
 import { ReservesProvider } from './contexts/reservesContext';
 import { InstallationProvider } from './contexts/installationContext';
 import { CustomWeatherProvider } from './contexts/customWeatherContext';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (        
       <ReservesProvider>
         <InstallationProvider>
           <CustomWeatherProvider>            
-            <BrowserRouter>            
+            <Router>            
               <Routes>
                 <Route path='/' element={<Home />}/>
                 {/* <Route path='/survival-mission' element={}/>
                 <Route path='/space-quiz' element={}/> */}
               </Routes>
-            </BrowserRouter>
+            </Router>
           </CustomWeatherProvider>          
         </InstallationProvider>        
       </ReservesProvider>                      
