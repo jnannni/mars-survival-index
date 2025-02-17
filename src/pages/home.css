@@ -11,7 +11,7 @@
     font-size: var(--font-size-sm);
     color: var(--primary-text-color);
     padding-top: 4rem;
-    background-image: url("/public/assets/mars-survival-index-back.png");
+    background-image: url("/src/assets/mars-survival-index-back.png");
     background-repeat: no-repeat;
     background-size: cover;
     /* background-position: center;  */
