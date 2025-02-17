@@ -30,4 +30,4 @@ My website is a one-page site; well, **for now**. At least, the idea is to itera
 #### Project(my🙋🏻‍♀️) skills
 [![My Skills](https://skillicons.dev/icons?i=react,js,html,css,figma)](https://skillicons.dev)
 
-Project is available to view.
+Project is available to [view](https://jnannni.github.io/mars-survival-index/).
