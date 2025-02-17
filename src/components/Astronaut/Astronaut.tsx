@@ -24,8 +24,11 @@ export default function Astronaut() {
             <button className="button m-field" onClick={() => installationDispatch({type: "INSTALL_FIELD"})}>
                 {installationState.magneticFieldInstalled ? <span>Remove magnetic field</span> : <span>Install magnetic field</span>}
             </button>
-            <img className={deviceWidth >= 768 ? "astronaut-img" : "hidden"} src={state.spaceSuitOn ? "/assets/Astronaut.png" : "/assets/astronaut_undressed.png"} 
-                onClick={() => dispatch({type: "WEAR_SUIT"})}></img>
+            <div className="astro-img-container">
+                <img className={deviceWidth >= 768 ? "astronaut-img" : "hidden"} src={state.spaceSuitOn ? "/assets/Astronaut.png" : "/assets/astronaut_undressed.png"} 
+                onClick={() => dispatch({type: "WEAR_SUIT"})} />
+                <span className="material-symbols-outlined">touch_app</span>
+            </div>
             <button className={deviceWidth < 768 ? "button" : "hidden"} onClick={() => dispatch({type: "WEAR_SUIT"})}>
                 {state.spaceSuitOn ? <span>Take off your space suit</span> : <span>Wear your space suit</span>}</button>
             <img className={deviceWidth >= 768 ? "rover-img" : "hidden"} src="/assets/rover.png"/>

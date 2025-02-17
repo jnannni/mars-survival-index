@@ -3,9 +3,18 @@
 .home-container {
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    margin-bottom: 4rem;
+    background-position: center;    
     overflow: hidden;
+}
+
+.description-container {
+    font-size: var(--font-size-sm);
+    color: var(--primary-text-color);
+    padding-top: 4rem;
+    background-image: url("/public/assets/mars-survival-index-back.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center;  */
 }
 
 .main-content {
@@ -21,7 +30,10 @@
     margin-left: auto;
     margin-right: auto;
     padding: 1rem .5rem;
-    border: 1px solid red;   
+}
+
+.image-overlay {
+    background-color: var(--color-gray-800-30);
 }
 
 .main-title {
@@ -96,10 +108,9 @@
 @media (min-width: 640px) {
     .main-content {
         font-size: var(--font-size-sm); 
-        padding: 0;              
+                     
     }    
-    .container {
-        padding: 0.5rem 0;
+    .container {        
         max-width: 640px;
     }
     .main-title{
@@ -131,7 +142,7 @@
         font-size: var(--font-size-lg);        
     } 
     .container {
-        max-width: 1024px;
+        max-width: 1024px;        
     }
     .main-title{
         font-size: var(--font-size-4xl);

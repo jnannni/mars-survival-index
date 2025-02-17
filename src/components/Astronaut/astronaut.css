@@ -6,6 +6,18 @@
     flex-wrap: wrap;
 }
 
+.astro-img-container {
+    position: relative;
+}
+
+.astro-img-container > span {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    transform: rotate(-45deg);
+    cursor: default;
+}
+
 .button {
     background-color: var(--color-black-30);
     border: none;
@@ -13,7 +25,7 @@
     font-weight: 600;
     text-transform: capitalize;
     font-size: var(--font-size-xs);
-    padding: 0.5em 1em;
+    padding: 1rem 1rem;
     border-radius: 10px;  
 }
 
@@ -24,6 +36,7 @@
 .astronaut-img {
     max-height: 300px;
     width: auto;
+    cursor: pointer;
 }
 
 .rover-img {

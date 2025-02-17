@@ -19,6 +19,22 @@ nav {
     align-items: end;    
 }
 
+.survival-nission, .space-quiz {
+    position: relative;
+}
+
+.nav-tooltip {
+    background-color: var(--color-gray-200);
+    opacity: .8;
+    color: var(--primary-text-color-d);
+    padding: .5rem 1rem;
+    position: absolute;
+    font-size: var(--font-size-xs);
+    border-radius: 1rem;
+    top: 2rem;
+    right: 0;
+}
+
 .menu-symbol {
     color: var(--primary-text-color);
     pointer-events: visible;
