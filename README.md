@@ -17,11 +17,10 @@ I do want to make my own sprites for an astronaut and a rover, but it is still i
 #### Design - Figma
 Initially, I did some wireframes in Figma. My intentions from the beginning were to make responsive design, so sketches were everything to me. I followed mobile-first approach.
 
-<div display="flex" gap="10">
-    <img src="/public/assets/readme-img/1.png" width="auto" height="200"/>
-    <img src="/public/assets/readme-img/2.png" width="auto" height="200"/>
-    <img src="/public/assets/readme-img/3.png" width="auto" height="200"/>
-    <img src="/public/assets/readme-img/4.png" width="auto" height="200"/>
+<div display="flex" gap="30">
+    <img src="./src/assets/readme-img/1.png" width="auto" height="200"/>
+    <img src="./src/assets/readme-img/2.png" width="auto" height="200"/>
+    <img src="./src/assets/readme-img/3.png" width="auto" height="200"/>
 </div>
 
 ### Future Work

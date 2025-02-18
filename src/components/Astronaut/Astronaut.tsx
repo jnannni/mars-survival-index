@@ -30,7 +30,7 @@ export default function Astronaut() {
             <div className="astro-img-container">
                 <img className={deviceWidth >= 768 ? "astronaut-img" : "hidden"} src={state.spaceSuitOn ? astronaut : astronautUn} 
                 onClick={() => dispatch({type: "WEAR_SUIT"})} />
-                <span className="material-symbols-outlined">touch_app</span>
+                <span className={deviceWidth >= 768 ? "material-symbols-outlined" : "material-symbols-outlined hidden"}>touch_app</span>
             </div>
             <button className={deviceWidth < 768 ? "button" : "hidden"} onClick={() => dispatch({type: "WEAR_SUIT"})}>
                 {state.spaceSuitOn ? <span>Take off your space suit</span> : <span>Wear your space suit</span>}</button>
