@@ -10,7 +10,7 @@ Your chances are counted based on those parametres and translated to hours and m
 #### Background
 I used Nasa [Mars Rover Photos API](https://api.nasa.gov/) to generate a background image for the first part of the website and Inkscape to make a background for an additional section.
 
-<img src="/public/assets/mars-survival-index-back.png" alt="background-image-2" width="auto" height="200">
+<img src="./src/assets/mars-survival-index-back.png" alt="background-image-2" width="auto" height="200">
 
 I do want to make my own sprites for an astronaut and a rover, but it is still in work.
 
