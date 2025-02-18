@@ -10,6 +10,8 @@ export default function Astronaut() {
     const {state, dispatch} = useContext(InstallationContext); 
     const [deviceWidth, setDeviceWidth] = useState<number>(window.innerWidth);
     const {state: installationState, dispatch: installationDispatch} = useContext(InstallationContext); 
+    const magneticFieldInstallText = installationState.magneticFieldInstalled ? "Remove magnetic field" : "Install magnetic field";
+    const spaceSuitOnText = state.spaceSuitOn ? "Take off your space suit" : "Wear your space suit";
     
     const handleWindowSizeChanges = () => {
         setDeviceWidth(window.innerWidth);
@@ -25,16 +27,15 @@ export default function Astronaut() {
     return (
         <div className="bools-container">
             <button className="button m-field" onClick={() => installationDispatch({type: "INSTALL_FIELD"})}>
-                {installationState.magneticFieldInstalled ? <span>Remove magnetic field</span> : <span>Install magnetic field</span>}
+                <span>{magneticFieldInstallText}</span>
             </button>
             <div className="astro-img-container">
-                <img className={deviceWidth >= 768 ? "astronaut-img" : "hidden"} src={state.spaceSuitOn ? astronaut : astronautUn} 
+                <img className="astronaut-img" src={state.spaceSuitOn ? astronaut : astronautUn} 
                 onClick={() => dispatch({type: "WEAR_SUIT"})} />
-                <span className={deviceWidth >= 768 ? "material-symbols-outlined" : "material-symbols-outlined hidden"}>touch_app</span>
+                <span className="material-symbols-outlined">touch_app</span>
             </div>
-            <button className={deviceWidth < 768 ? "button" : "hidden"} onClick={() => dispatch({type: "WEAR_SUIT"})}>
-                {state.spaceSuitOn ? <span>Take off your space suit</span> : <span>Wear your space suit</span>}</button>
-            <img className={deviceWidth >= 768 ? "rover-img" : "hidden"} src={rover}/>
+            <button className="button suit-btn" onClick={() => dispatch({type: "WEAR_SUIT"})}>{spaceSuitOnText}</button>
+            <img className="rover-img" src={rover}/>
         </div>
     )
 }

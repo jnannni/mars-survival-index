@@ -11,11 +11,7 @@
 }
 
 .astro-img-container > span {
-    position: absolute;
-    top: 30%;
-    right: 0;
-    transform: rotate(-45deg);
-    cursor: default;
+    display: none;
 }
 
 .button {
@@ -34,19 +30,11 @@
 }
 
 .astronaut-img {
-    max-height: 300px;
-    width: auto;
-    cursor: pointer;
+    display: none;
 }
 
 .rover-img {
-    position: absolute;
-    height: auto;        
-    left: -20px;   
-    bottom: 0;
-    transform: scale(1.5);
-    transform-origin: bottom left;
-    z-index: -1;
+    display: none;
 }
 
 /* @media (min-width: 425px) {} */
@@ -60,6 +48,33 @@
 
 /* md */
 @media (min-width: 768px) {
+    .rover-img {
+        display: block;
+        position: absolute;
+        height: auto;        
+        left: -20px;   
+        bottom: 0;
+        transform: scale(1.5);
+        transform-origin: bottom left;
+        z-index: -1;
+    }
+    .astro-img-container > span {
+        display: block;
+        position: absolute;
+        top: 30%;
+        right: 0;
+        transform: rotate(-45deg);
+        cursor: default;
+    }
+    .astronaut-img {
+        display: block;
+        max-height: 300px;
+        width: auto;
+        cursor: pointer;
+    }
+    .suit-btn {
+        display: none;
+    }
     .bools-container {   
         flex-direction: column; 
         justify-content: center;
@@ -71,12 +86,10 @@
 }
 
 /* lg */
-@media (min-width: 1024px) {
-}
+/* @media (min-width: 1024px) {} */
 
 /* xl */
-@media (min-width: 1280px) {
-}
+/* @media (min-width: 1280px) {} */
 
 /* 2xl */
 @media (min-width: 1536px) {

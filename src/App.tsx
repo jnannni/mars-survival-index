@@ -12,9 +12,7 @@ function App() {
           <CustomWeatherProvider>            
             <Router>            
               <Routes>
-                <Route path='/' element={<Home />}/>
-                {/* <Route path='/survival-mission' element={}/>
-                <Route path='/space-quiz' element={}/> */}
+                <Route path='/' element={<Home />}/>                
               </Routes>
             </Router>
           </CustomWeatherProvider>          

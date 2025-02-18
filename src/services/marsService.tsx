@@ -1,23 +1,23 @@
 import axios from "axios";
 
-export type New_Mars_Data = {
-    [sol: number]: New_Mars_Data_Parameters,    
+export type NewMarsData = {
+    [sol: number]: NewMarsDataParameters,    
 }
 
-type New_Mars_Data_Parameters = {
+type NewMarsDataParameters = {
     temp: number,
     pre: number,
     wind: number,
 }
 
-type Mars_Data_Raw = {
-    AT: Mars_Data_Parameters, // temperature
-    HWS: Mars_Data_Parameters, // wind speed
-    PRE: Mars_Data_Parameters, // pressure
-    [key: string]: Mars_Data_Parameters | string | number | object  | null;
+type MarsDataRaw = {
+    AT: MarsDataParameters, // temperature
+    HWS: MarsDataParameters, // wind speed
+    PRE: MarsDataParameters, // pressure
+    [key: string]: MarsDataParameters | string | number | object  | null;
 }
 
-type Mars_Data_Parameters = {
+type MarsDataParameters = {
     av: number, // average
     ct: number,
     mn: number,
@@ -25,11 +25,12 @@ type Mars_Data_Parameters = {
 }
 
 const nasa_api_key = process.env.REACT_APP_MARS_INSIGHT_API_KEY;
+const maxSOL = 4449;
 
 export const getMarsWeather = async () => {
     try {
         const response = await axios.get(`https://api.nasa.gov/insight_weather/?api_key=${nasa_api_key}&feedtype=json&ver=1.0`);
-        const allEntries: New_Mars_Data = response.data.sol_keys.reduce((acc: New_Mars_Data, sol: number) => {
+        const allEntries: NewMarsData = response.data.sol_keys.reduce((acc: NewMarsData, sol: number) => {
             acc[sol] = writeSolData(response.data[sol]);
             return acc;
         }, {});       
@@ -45,7 +46,7 @@ export const getMarsPhoto = async () => {
     let photoURL = "";
     try {
         while(!isPhotoFound) {
-            const sol = Math.floor(Math.random() * 4449);            
+            const sol = Math.floor(Math.random() * maxSOL);            
             const response = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${nasa_api_key}&sol=${sol}&camera=fhaz`);            
             if (response.data.photos && response.data.photos.length !== 0) {                
                 isPhotoFound = true;
@@ -58,7 +59,7 @@ export const getMarsPhoto = async () => {
     }
 }
 
-function writeSolData (sol_data: Mars_Data_Raw): New_Mars_Data_Parameters {
+function writeSolData (sol_data: MarsDataRaw): NewMarsDataParameters {
     const av_temp = sol_data.AT.av
     const av_pre = sol_data.PRE.av;
     const av_wind = sol_data.HWS.av; 

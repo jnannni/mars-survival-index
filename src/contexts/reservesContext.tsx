@@ -1,12 +1,12 @@
 import React, {createContext, ReactNode, useReducer} from "react";
-import { reservesReducer, INITIAL_STATE, Reserves_State, ActionInterface } from "../reducers/reservesReducer";
+import { reservesReducer, INITIAL_STATE, ReservesState, ActionInterface } from "../reducers/reservesReducer";
 
 interface ReservesProviderProps {
     children: ReactNode;
 }
 
 interface ReservesContextProps {
-    state: Reserves_State,
+    state: ReservesState,
     dispatch: React.Dispatch<ActionInterface>,
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext, useRef } from "react";
 import WeatherCard from "../components/WeatherCard/WeatherCard";
-import { getMarsWeather, New_Mars_Data, getMarsPhoto } from "../services/marsService";
+import { getMarsWeather, NewMarsData, getMarsPhoto } from "../services/marsService";
 import InteractiveModel from "../components/InteractiveModel/InteractiveModel";
 import SurvivalIndex from "../components/SurvivalIndex/SurvivalIndex";
 import CustomWeatherCard from "../components/WeatherCard/CustomWeatherCard";
@@ -10,7 +10,7 @@ import Header from "../components/Header/Header";
 import './home.css';
 
 export default function Home() {
-    const [allEntries, setAllEntries] = useState<New_Mars_Data>({});     
+    const [allEntries, setAllEntries] = useState<NewMarsData>({});     
     const [selectedCard, setSelectedCard] = useState("");
     const [photoURL, setPhotoURL] = useState("");
     const {state, dispatch} = useContext(CustomWeatherContext);
@@ -50,18 +50,16 @@ export default function Home() {
                                 <p className="display-text">Today’s temperature on Mars is -80°C, which is 100°C colder than Antarctica! Wear a spacesuit rated for -100°C!</p>                    
                                 {selectedCard === "custom" ? <SurvivalIndex temp={state.temp} pres={state.pres} wind={state.wind}/>: 
                                 Object.entries(allEntries).filter(item => selectedCard === item[0]).map(item => 
-                                                    <SurvivalIndex temp={Math.trunc(item[1].temp)} pres={Math.trunc(item[1].pre)} wind={Math.trunc(item[1].wind)}/>)} 
+                                                    <SurvivalIndex key={item[0]} temp={Math.trunc(item[1].temp)} pres={Math.trunc(item[1].pre)} wind={Math.trunc(item[1].wind)}/>)} 
                             </div>                        
                             <InteractiveModel />
                         </div> 
                         <div className="cards-container">
-                            <div className="card-group"> 
-                                {/* <span className="material-symbols-outlined pre-btn">chevron_right</span>  */}
+                            <div className="card-group">                                 
                                 {allEntries && Object.entries(allEntries)
                                                 .map(item => <WeatherCard className={selectedCard === item[0] ? "selected-card" : ""} key={item[0]} m_day={parseInt(item[0])} m_temp={Math.trunc(item[1].temp)}
                                                                             m_pres={Math.trunc(item[1].pre)} m_wind={Math.trunc(item[1].wind)} selectCard={() => setSelectedCard(item[0])}/>)}
-                                <CustomWeatherCard className={selectedCard === "custom" ? "selected-card" : ""} selectCard={() => setSelectedCard("custom")}/>
-                                {/* <span className="material-symbols-outlined nxt-btn">chevron_right</span> */}
+                                <CustomWeatherCard className={selectedCard === "custom" ? "selected-card" : ""} selectCard={() => setSelectedCard("custom")}/>                                
                             </div>
                         </div>                    
                     </div> 

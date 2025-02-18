@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./weatherCard.css";
 
-interface Mars_Parameters {
+interface MarsParameters {
     m_day: number;
     m_temp: number;
     m_pres: number;
@@ -11,7 +11,7 @@ interface Mars_Parameters {
 }
 
 // a weather card container that displays mars weather from nasa api base
-export default function WeatherCard(props: Mars_Parameters) {
+export default function WeatherCard(props: MarsParameters) {
     const [isClicked, setIsClicked] = useState(false);           
 
     return (

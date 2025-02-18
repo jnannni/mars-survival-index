@@ -4,25 +4,25 @@ export const INITIAL_STATE = {
     tempLimit: {counter: -70, min_count: -150, max_count: 20, step: 1},
 }
 
-interface Reserve_State {
+interface ReserveState {
     counter: number,
     min_count: number,
     max_count: number,
     step: number,    
 }
 
-export interface Reserves_State {
-    water: Reserve_State,
-    oxygen: Reserve_State,
-    tempLimit: Reserve_State,
+export interface ReservesState {
+    water: ReserveState,
+    oxygen: ReserveState,
+    tempLimit: ReserveState,
 }
 
 export interface ActionInterface {
     type: string,
-    payload?: Reserves_State
+    payload?: ReservesState
 }
 
-export const reservesReducer = (state: Reserves_State, action: ActionInterface): Reserves_State => {
+export const reservesReducer = (state: ReservesState, action: ActionInterface): ReservesState => {
     switch(action.type) {
         case "INCREASE_WATER":
             return {...state, water: {...state.water, 
