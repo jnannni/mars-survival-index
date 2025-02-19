@@ -4,13 +4,11 @@
     display: flex;
     justify-content: flex-end;    
     color: var(--primary-text-color);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-base);
     text-transform: lowercase;
     font-weight: bold;
     margin-top: 0;
-    margin-bottom: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    margin-bottom: 1rem;    
 }
 
 nav {
@@ -19,30 +17,52 @@ nav {
     align-items: end;    
 }
 
-.survival-nission, .space-quiz {
+.survival-mission, .space-quiz {
     position: relative;
 }
 
-.nav-tooltip {
+.survival-mission .nav-tooltip, .space-quiz .nav-tooltip {
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    visibility: hidden;
     background-color: var(--color-gray-200);
+    font-size: var(--font-size-xs);
+    border-radius: 1rem;
     opacity: .8;
     color: var(--primary-text-color-d);
     padding: .5rem 1rem;
+}
+
+.survival-mission:hover .nav-tooltip, .space-quiz:hover .nav-tooltip {
+    visibility: visible;
+}
+
+.menu {
+    position: relative;
+}
+
+.fake-input {
     position: absolute;
-    font-size: var(--font-size-xs);
-    border-radius: 1rem;
-    top: 2rem;
-    right: 0;
+    left: 50%;
+    top: .5rem;     
+    display: none;
+    visibility: none;
 }
 
 .menu-symbol {
     color: var(--primary-text-color);
     pointer-events: visible;
     cursor: pointer;
+    margin-bottom: 1rem;
 }
 
 .menu-symbol:hover {  
     color: var(--hover-text-color);  
+}
+
+.fake-input:checked ~ .menu-symbol {
+    transform: rotate(90deg);    
 }
 
 .nav-list {
@@ -57,8 +77,13 @@ nav {
 li {    
     position: relative;
     margin: 0;
-    padding: .5em;
+    padding: .5rem;
     padding-right: 0;
+    margin-bottom: 1rem;
+}
+
+li:last-child {
+    margin: 0;
 }
 
 .link-style {    
@@ -92,7 +117,6 @@ li {
 /* sm */
 @media (min-width: 640px) {
     .header {
-        font-size: var(--font-size-sm);
         justify-content: center;  
         margin-bottom: 2rem;      
     }
@@ -120,7 +144,8 @@ li {
 /* md */
 @media (min-width: 768px) {
     .header {
-        font-size: var(--font-size-base);        
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
 }
 

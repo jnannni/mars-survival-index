@@ -2,7 +2,7 @@
 
 .bools-container {
     display: flex;    
-    gap: 7px;
+    gap: .5rem;
     flex-wrap: wrap;
 }
 

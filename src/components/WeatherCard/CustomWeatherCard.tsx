@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
-import { CustomWeatherContext } from "../../contexts/customWeatherContext";
-import { CustomState } from "../../reducers/customCardReducer";
+import { useContext } from "react";
+import { CustomWeatherContext } from "@contexts/customWeatherContext";
+import { CustomState } from "@reducers/customCardReducer";
+import { ACTION_TYPES } from "@reducers/actionTypes";
 import "./weatherCard.css";
 
 interface Parameters {
@@ -13,7 +14,7 @@ export default function CustomWeatherCard(props: Parameters) {
     const {state, dispatch} = useContext(CustomWeatherContext);     
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch({type: "CHANGE_INPUT", payload: {name: e.target.name as keyof CustomState, value: Number(e.target.value)}});                
+        dispatch({type: ACTION_TYPES.CHANGE_INPUT, payload: {name: e.target.name as keyof CustomState, value: Number(e.target.value)}});                
     }
     
     return (

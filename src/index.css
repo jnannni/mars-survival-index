@@ -30,6 +30,15 @@
     --font-size-3xl: 1.75rem;
     --font-size-4xl: 2rem;
     --font-size-5xl: 2.25rem;
+
+    /* screen sizes */
+    --min-width-xs: 475px;
+    --min-width-s: 640px;
+    --min-width-m: 768px;
+    --min-width-l: 1024px;
+    --min-width-xl: 1280px;
+    --min-width-2xl: 1536px;
+
 }
 
 * {

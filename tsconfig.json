@@ -19,7 +19,16 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@services/*": ["services/*"],
+      "@contexts/*": ["contexts/*"],
+      "@reducers/*": ["reducers/*"],
+      "@assets/*": ["assets/*"],
+      "@common/*": ["common/*"],
+    }
   },
   "include": [
     "src/**/*"

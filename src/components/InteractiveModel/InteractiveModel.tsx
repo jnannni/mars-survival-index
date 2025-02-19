@@ -1,5 +1,5 @@
-import Astronaut from "../Astronaut/Astronaut";
-import Rover from "../Rover/Rover";
+import Astronaut from "@components/Astronaut";
+import Rover from "@components/Rover";
 import "./model.css";
 
 //contains 2 models that users can interact with and as a result manipulate their survival index

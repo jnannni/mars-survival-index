@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
-import { ReservesContext } from "../../contexts/reservesContext";
-import { InstallationContext } from "../../contexts/installationContext";
+import { ReservesContext } from "@contexts/reservesContext";
+import { InstallationContext } from "@contexts/installationContext";
 import "./survivalIndex.css";
 
 interface CurrentWeather {
@@ -15,6 +15,7 @@ export default function SurvivalIndex(props: CurrentWeather) {
     const {state: installationState, dispatch: installationDispatch} = useContext(InstallationContext);
     const [index, setIndex] = useState(0);
     const [survivalTime, setSurvivalTime] = useState({hours: 0, minutes: 0});
+    const minInDay = 1440;
 
     const indexValues = {
         water: reservesState.water.counter,
@@ -32,12 +33,8 @@ export default function SurvivalIndex(props: CurrentWeather) {
         countIndex();
     }, [indexValues]);
 
-    // max index - 100, min index - 0, if exceeds just bring to max/min. we count index using 7 variable we have in contexts and in its parent.
-    // temperature & templimit - points range [-20, 20]; magnetic field = -10 or 10; pressure - always negative (-15),
-    // wind - range [-10, 5]; water reserve [0, 25] (25 when water is enough for a day); oxygen reserve - [0, 20] (20 when its enough for a day)
-
     const countIndex = () => {
-        let points = countPointsReserves(indexValues.water, reservesState.water.max_count, 25) + 
+        const points = countPointsReserves(indexValues.water, reservesState.water.max_count, 25) + 
                     countPointsReserves(indexValues.oxygen, reservesState.oxygen.max_count, 20) +
                     countPointsBooleans(indexValues.isMagFieldInstalled, 10, -10) + 
                     countPointsTemp(indexValues.temp, indexValues.tempLimit, reservesState.tempLimit.min_count, 20) +
@@ -47,7 +44,7 @@ export default function SurvivalIndex(props: CurrentWeather) {
     }
 
     const calculateSurvivalTime = (survivalIndex: number) => {
-        let minutes = Math.round((survivalIndex / 100) * 1440);
+        let minutes = Math.round((survivalIndex / 100) * minInDay);
         let hours = Math.round(minutes / 60);
         let remainingMin = minutes % 60;
         setSurvivalTime({hours: hours, minutes: remainingMin});
