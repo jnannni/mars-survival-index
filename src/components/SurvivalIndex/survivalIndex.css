@@ -1,0 +1,48 @@
+@import url(../../index.css);
+
+.index-container {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.index-number-container {    
+    flex: 0 0 auto;
+    border: 3px solid var(--primary-text-color);
+    border-radius: 5rem;
+    padding: 2.5rem;
+    font-weight: 600;
+}
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+@media (min-width: 1024px) {
+    .index-number-container {
+        padding: 3.5rem;
+        border: 5px solid var(--primary-text-color);
+        font-size: var(--font-size-xl);        
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .index-number-container {
+        padding: 4rem;
+    }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    .index-number-container {
+        font-size: var(--font-size-2xl);
+    }
+}

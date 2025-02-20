@@ -1,13 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import Home from './pages/Home';
+import { ReservesProvider } from '@contexts/reservesContext';
+import { InstallationProvider } from '@contexts/installationContext';
+import { CustomWeatherProvider } from '@contexts/customWeatherContext';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Gallery from './components/Gallery';
 
 function App() {
-  return (
-    <div className="App">
-       <Gallery />
-    </div>
+  return (        
+      <ReservesProvider>
+        <InstallationProvider>
+          <CustomWeatherProvider>            
+            <Router>            
+              <Routes>
+                <Route path='/' element={<Home />}/>                
+              </Routes>
+            </Router>
+          </CustomWeatherProvider>          
+        </InstallationProvider>        
+      </ReservesProvider>                      
   );
 }
 
