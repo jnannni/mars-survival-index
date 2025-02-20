@@ -4,6 +4,11 @@
     margin-bottom: 2rem;
 }
 
+#check2:checked + .about-body-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .about-header, .project-header { 
     margin-bottom: 1rem; 
     font-size: var(--font-size-base);  
@@ -15,6 +20,7 @@
     background-color: var(--color-gray-800-50);
     border-radius: 1rem;
     cursor: pointer;
+    z-index: 1; 
 }
 
 .project-body {
@@ -26,10 +32,8 @@
     transition: transform 200ms ease-in;
 }
 
-.active-body {
-    border-radius: 1rem 1rem 0 0; 
-    background-color: var(--color-gray-200-50);
-    color: var(--primary-text-color-d);         
+#check2:checked + label .about-body{    
+    border: 1px solid var(--primary-text-color);           
 }
 
 .about-body > span {
@@ -37,11 +41,27 @@
     right: 1rem;
 }
 
+#check2 {
+    display: none;
+    visibility: none;
+}
+
 .about-body-details {
-    font-size: var(--font-size-xs);
-    padding: 1rem 1rem;
-    background-color: var(--color-gray-200-50);
-    color: var(--primary-text-color-d)
+    font-size: var(--font-size-xs);    
+    background-color: var(--color-gray-800-50);
+    color: var(--primary-text-color);
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+}
+
+#check2:checked ~ .about-body-details {
+    border-radius: 1rem;
+    margin-top: .5rem;
+    max-height: 420px;
+    padding: 1rem;
+    border: 1px solid var(--primary-text-color);
 }
 
 .about-body-details > p, .project-body > p {
@@ -63,7 +83,7 @@
 
 /* sm */
 @media (min-width: 640px) {
-    .about-body, .about-body-details, .project-body {
+    .about-body, .project-body {
         padding: 2rem 2rem;
     }
     .active-body {
@@ -82,11 +102,14 @@
     .about-header, .project-header {
         font-size: var(--font-size-lg);
     }
+    #check2:checked ~ .about-body-details {
+        padding: 2rem;
+    }
 }
 
 /* lg */
 @media (min-width: 1024px) {
-    .about-body, .about-body-details, .project-body {
+    .about-body, .project-body, #check2:checked ~ .about-body-details {
         padding: 4rem 2rem;
     }
     .about-container, .project-body {

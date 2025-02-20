@@ -24,8 +24,8 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "predeploy": "yarn craco build",
-    "deploy": "gh-pages -d craco build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "test": "craco test",
     "eject": "craco eject"
   },
